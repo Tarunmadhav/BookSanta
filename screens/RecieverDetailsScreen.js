@@ -16,11 +16,12 @@ export default class RecieverDetailsScreen extends React.Component{
         recieverName:"",
         recieverContact:"",
         recieverAddress:"",
-        recieverRequestDocId:""
+        recieverRequestDocId:"",
+        userName:""
     }
     }
     getRecieverDetails(){
-        db.collection("users").where("emailId","==",recieverId).get()
+        db.collection("users").where("emailId","==",this.state.recieverId).get()
         .then(snapshot=>{
             snapshot.forEach(doc=>{
                 this.setState({
@@ -52,6 +53,30 @@ export default class RecieverDetailsScreen extends React.Component{
     }
     componentDidMount(){
         this.getRecieverDetails()
+        this.getUserDetails(this.state.userId)
+    }
+    getUserDetails=(userId)=>{
+db.collection("users").where("emailId","==",userId).get()
+.then(snapshot=>{
+    snapshot.forEach(doc=>{
+        this.setState({
+           userName:doc.data().first_Name+""+doc.data().last_Name
+        })
+        
+    })
+})
+    }
+    addNotification=()=>{
+        var message=this.state.userName+"Has Shown Intrest In Donating The Book"
+        db.collection("all_notifications").add({
+            targeted_user_id:this.state.recieverId,
+            donor_id:this.state.userId,
+            request_id:this.state.requestId,
+            book_name:this.state.bookName,
+            date:firebase.firestore.FieldValue.serverTimestamp(),
+            notification_status:"UnRead",
+            message:message
+        })
     }
     render(){
         return(
@@ -89,12 +114,12 @@ Name:{this.state.recieverName}
     </Card>
     <Card>
         <Text style={{fontWeight:"bold",fontSize:10}}>
-Contact:{this.state.contact}
+Contact:{this.state.recievercontact}
         </Text>
     </Card>
     <Card>
         <Text style={{fontWeight:"bold",fontSize:10}}>
-Address:{this.state.address}
+Address:{this.state.recieveraddress}
         </Text>
     </Card>
 </Card>
@@ -104,7 +129,8 @@ Address:{this.state.address}
 ?(
     <TouchableOpacity onPress={()=>{
         this.updateBookStatus()
-        this.props.navigation.navigate("My Donations")
+        this.props.navigation.navigate("MyDonations")
+        this.addNotification()
     }}>
 <Text>
     I Want To Donate
