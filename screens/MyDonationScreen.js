@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,TouchableOpacity,TextInput,Modal,ScrollView,Keyb
 import {ListItem,Icon} from "react-native-elements"
 import db from "../config";
 import  firebase from "firebase"
-import {MyHeader} from "../components/MyHeader"
+import MyHeader from "../components/MyHeader"
 
 export default class MyDonation extends React.Component{
     static navigationOptions={header:null}

@@ -7,6 +7,8 @@ import {AppTabNavigator} from "./AppTabNavigator"
 import CustomSideBarMenu from "./CustomSIdeBarMenu"
 import MyDonationScreen from "../screens/MyDonationScreen"
 import SettingsScreen from "../screens/SettingsScreens"
+import NotificationScreen from "../screens/NotificationScreen"
+
 export const AppDrawerNavigator=createDrawerNavigator({
 Home:{
     screen:AppTabNavigator
@@ -16,7 +18,10 @@ setting:{
 },
 MyDonations:{
 screen:MyDonationScreen
-}
+},
+Notification:{
+    screen:NotificationScreen
+    }
 },
 {contentComponent:CustomSideBarMenu},
 {initialRouteName:"Home"}

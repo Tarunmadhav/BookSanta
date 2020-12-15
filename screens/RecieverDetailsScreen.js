@@ -114,12 +114,12 @@ Name:{this.state.recieverName}
     </Card>
     <Card>
         <Text style={{fontWeight:"bold",fontSize:10}}>
-Contact:{this.state.recievercontact}
+Contact:{this.state.recieverContact}
         </Text>
     </Card>
     <Card>
         <Text style={{fontWeight:"bold",fontSize:10}}>
-Address:{this.state.recieveraddress}
+Address:{this.state.recieverAddress}
         </Text>
     </Card>
 </Card>

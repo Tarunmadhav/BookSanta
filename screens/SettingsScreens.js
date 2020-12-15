@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity,TextInput,Modal,ScrollView,KeyboardAvoidingView, SnapshotViewIOS } from 'react-native';
 import db from "../config";
 import  firebase from "firebase"
-import {MyHeader} from "../components/MyHeader"
+import MyHeader from "../components/MyHeader"
 
 export default class SettingsScreen extends React.Component{
     constructor(){

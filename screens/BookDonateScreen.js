@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,TouchableOpacity,TextInput,Modal,ScrollView,Keyb
 import {ListItem} from "react-native-elements"
 import db from "../config";
 import  firebase from "firebase"
-import {MyHeader} from "../components/MyHeader"
+import MyHeader from "../components/MyHeader"
 
 export default class BookDonateScreen extends React.Component{
     constructor(){

@@ -1,13 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity,TextInput,Modal,ScrollView,KeyboardAvoidingView,Image } from 'react-native';
-import db from "../config";
-import  firebase from "firebase"
-import BookDonateScreen from "../screens/BookDonateScreen"
+import { Image } from 'react-native';
 import {createBottomTabNavigator} from "react-navigation-tabs"
 import BookRequestScreen from '../screens/BookRequestScreen';
+import {AppStackNavigator} from './AppStackNavigator'
 export const AppTabNavigator =createBottomTabNavigator({
  DonateBooks:{
-     screen:BookDonateScreen,
+     screen:AppStackNavigator,
+ 
      navigationOptions:{
          tabBarIcon:<Image
          source={
