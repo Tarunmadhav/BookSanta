@@ -1,20 +1,39 @@
+import React,{Component} from 'react';
+import { createAppContainer, createSwitchNavigator,} from 'react-navigation';
 
-import React from 'react';
-import { render } from 'react-dom';
-import { StyleSheet, Text, View, } from 'react-native';
-import WelcomeScreen from "./screens/WelcomeScreen";
-import {AppTabNavigator} from "./components/AppTabNavigator"
-import {createAppContainer,createSwitchNavigator,CreateSwitchNavigator} from "react-navigation";
-import {AppDrawerNavigator} from "./components/AppDrawerNavigator"
-export default class App extends React.Component{
-  render(){
-return(
-<AppContainer/>
-)
-  }
+import WelcomeScreen from './screens/WelcomeScreen';
+import { AppDrawerNavigator } from './components/AppDrawerNavigator'
+import { AppTabNavigator } from './components/AppTabNavigator'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+function Demo() {
+  return (
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }}
+    >
+      <Text>This is top text.</Text>
+      <Text>This is bottom text.</Text>
+    </SafeAreaView>
+  );
 }
-const switchNavigator=createSwitchNavigator({
-  WelcomeScreen:{screen:WelcomeScreen},
-  Drawer:{screen:AppDrawerNavigator},
+
+
+export default class App extends Component{
+  render(){
+  return (
+    <SafeAreaProvider>
+    <AppContainer/>
+    </SafeAreaProvider>
+  );
+}
+}
+
+
+
+const switchNavigator = createSwitchNavigator({
+  WelcomeScreen:{screen: WelcomeScreen},
+  Drawer:{screen: AppDrawerNavigator},
+  BottomTab: {screen: AppTabNavigator},
 })
-const AppContainer=createAppContainer(switchNavigator)
+
+const AppContainer =  createAppContainer(switchNavigator);
